@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 import InputField from './components/InputField';
 import InputFieldaAvali from './components/InputFieldaAvali';
@@ -8,8 +8,11 @@ import InputFieldPont from './components/InputFieldPont';
 import InputFieldQuali from './components/InputFieldQuali';
 import InputFieldStat from './components/InputFieldStat';
 import { coletaDados } from './components/model';
-import { isDefaultClause } from 'typescript';
+//import { isDefaultClause } from 'typescript';
 import Gerenciamento from './components/Gerenciamento';
+import {BrowserRouter as Router, Route } from "react-router-dom";
+import PaginaMenu from './components/PaginaMenu';
+
 
 
 const App: React.FC = () => { //adicionada a tipagem do typescript
@@ -51,7 +54,7 @@ const App: React.FC = () => { //adicionada a tipagem do typescript
 
   const handleAdd = ():void => {
     const novoNumero: number = Math.floor(Math.random() * 100000)
-    const novoIndice = "#" + novoNumero.toString()
+    const novoIndice = novoNumero.toString()
     const newItem = {OBindice: novoIndice,OBqualificacao: qualificacao, OBavaliacao: avaliacao, OBpontuacao: pontuacao, OBcomentario: comentario, OBstatus: status}
 
     setLista([...lista, newItem])
@@ -78,26 +81,55 @@ const App: React.FC = () => { //adicionada a tipagem do typescript
 
 
   return (
-    <div className="App" onSubmit={handleAdd}>
+    <Router>
+    <div className="App">
       <span className="heading">teste 2</span>
-      {/* <InputField indice = {indice} setIndice = {setIndice} ></InputField> */}
-      <InputFieldaAvali avaliacao = {avaliacao} setAvaliacao = {setAvaliacao}></InputFieldaAvali>
-      <InputFieldComen comentario = {comentario} setComentario = {setComentario}></InputFieldComen>
-      <InputFieldPont pontuacao = {pontuacao} setPontuacao = {setPontuacao}></InputFieldPont>
-      <InputFieldQuali qualificacao = {qualificacao} setQualificacao={setQualificacao}></InputFieldQuali>
-      <InputFieldStat status={status} setStatus={setStatus}></InputFieldStat>
+      <Route path = "/" exact render={() => (
 
-      <button className="input__submit" type="submit" onClick = {handleAdd} >vai</button>
+        <div className="contem toda rota">
+                        {/* <InputField indice = {indice} setIndice = {setIndice} ></InputField> */}
+                  <InputFieldaAvali avaliacao = {avaliacao} setAvaliacao = {setAvaliacao}></InputFieldaAvali>
+                  <InputFieldComen comentario = {comentario} setComentario = {setComentario}></InputFieldComen>
+                  <InputFieldPont pontuacao = {pontuacao} setPontuacao = {setPontuacao}></InputFieldPont>
+                  <InputFieldQuali qualificacao = {qualificacao} setQualificacao={setQualificacao}></InputFieldQuali>
+                  <InputFieldStat status={status} setStatus={setStatus}></InputFieldStat>
 
-      <div className="lista">
-        {lista.map((lista:coletaDados, key:number )=>{
-          return <Gerenciamento key={key} lista={lista} deleteLista={deleteLista} ></Gerenciamento> 
-          
-        })}
-      </div>
+                  <button className="input__submit" type="submit" onClick = {handleAdd} >vai</button>
 
+                  <div className="lista">
+                    {lista.map((lista:coletaDados, key:number )=>{
+                      return <Gerenciamento key={key} lista={lista} deleteLista={deleteLista} ></Gerenciamento> 
+                      
+                    })}
+                  </div>
+
+        </div>
+
+
+
+
+      )}>
+
+
+
+
+      </Route>
+      
+      
+
+      <Route path="/:OBindice" exact component={PaginaMenu}>
+
+                   
+
+
+
+
+
+      </Route>
     </div>
+  </Router>
   );
+  
 }
 
 export default App;

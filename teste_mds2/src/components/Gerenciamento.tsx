@@ -2,6 +2,7 @@ import React from 'react';
 import { ListFormat } from 'typescript';
 import {coletaDados} from  "./model"
 import "./styles.css"
+import {BrowserRouter, useHistory} from "react-router-dom"
 
 //utilizar a props para colher o tipo de cada variavel 
 interface Props{
@@ -11,7 +12,17 @@ interface Props{
 }
 
 
+
 const Gerenciamento = ({lista, deleteLista}: Props) => {
+
+    const history = useHistory();
+
+    const handleClickNovaPagina = () => {
+
+      history.push(`/${lista.OBindice}`)
+    
+    }
+
 
     return(
         <div className="teste">
@@ -44,6 +55,7 @@ const Gerenciamento = ({lista, deleteLista}: Props) => {
 
         <button onClick={()=>{deleteLista(lista.OBindice)}} className="teste2">apagar</button>  
         <button className="teste2">editar</button>
+        <button className="PaginaNova" onClick={handleClickNovaPagina}>novaPagina</button>
             </div>
                   
         </div>)
