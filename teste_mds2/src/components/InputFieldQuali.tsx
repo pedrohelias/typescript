@@ -15,6 +15,7 @@ const InputFieldQuali:React.FC<Props> = ({qualificacao, setQualificacao}: Props)
         <input type="input" placeholder="Qualificação" className="input__box"
         value={qualificacao}
         onChange={(e)=>setQualificacao(e.target.value)}
+        name = "Qualificacao"
         ></input>
 
     </form>

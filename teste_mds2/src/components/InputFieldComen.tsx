@@ -18,6 +18,7 @@ const InputFieldComen:React.FC<Props> = ({comentario,setComentario}: Props) => {
            <input type="input" placeholder="Comentário" className="input__box"
            value={comentario}
            onChange={(e)=>setComentario(e.target.value)}
+           name = "Comentarios"
            ></input>
 
        </form>

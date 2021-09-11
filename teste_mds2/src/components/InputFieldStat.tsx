@@ -13,7 +13,9 @@ const InputFieldStat:React.FC<Props> = ({status, setStatus}: Props) => {
     return (
         <form className="input">
         <input type="input" placeholder="Status" className="input__box" value={status}
-        onChange={(e)=>setStatus(e.target.value)}></input>
+        onChange={(e)=>setStatus(e.target.value)}
+        name = "Status"
+        ></input>
 
     </form>
     )

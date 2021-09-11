@@ -14,10 +14,13 @@ interface Props{
 const InputFieldaAvali:React.FC<Props> = ({avaliacao,setAvaliacao}: Props) => {
     return (
         <form className="input">
-           <input type="input" placeholder="Avaliação" className="input__box"
-           value={avaliacao}
-           onChange={(e)=>setAvaliacao(e.target.value)}></input>
-
+            
+                <input type="input" placeholder="Avaliação" className="input__box"
+                value={avaliacao}
+                onChange={(e)=>setAvaliacao(e.target.value)}
+                name = "Avaliacao"
+                ></input>
+           
        </form>
     )
 }

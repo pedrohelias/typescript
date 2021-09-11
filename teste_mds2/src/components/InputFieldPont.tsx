@@ -11,6 +11,7 @@ const InputFieldPont:React.FC<Props> = ({pontuacao, setPontuacao}: Props) => {
         <form className="input">
         <input type="input" placeholder="Pontuação" className="input__box" value={pontuacao} 
         onChange={(e)=>setPontuacao(e.target.value)}
+        name = "Pontuacao"
         ></input>
 
     </form>
